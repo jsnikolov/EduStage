@@ -11,12 +11,34 @@ body{
     background: linear-gradient(135deg,#0057b8,#00a3ff);
     margin:0;
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+}
+
+.wrapper{
+	display:flex;
     color:#333;
 }
 
+.align{
+    justify-content:center;
+    align-items:center;
+}
+
+#logo{
+	max-width:100px;
+	width:8%;
+}
+#logo img{
+	width:100%;
+	height:auto;
+}
+.header{
+	padding:1%;
+	margin-bottom:2%;
+	background-color:#fff;
+	font-size:150%;
+	text-align:center;
+	justify-content: space-evenly;
+}
 .container{
     width:90%;
     max-width:700px;
@@ -27,7 +49,7 @@ body{
     text-align:center;
 }
 
-h1{
+h1, h2{
     color:#0057b8;
 }
 
@@ -106,199 +128,204 @@ h1{
 </style>
 </head>
 <body>
+	<header class="header wrapper align" >
+		<div id="logo"><img src="Logo-39-FINAL.svg" /></div>
+		<h1>39. СУ "Петър Динеков"</h1>
+	</header>
+		<div class="wrapper align">
+			<div class="container">
 
-<div class="container">
+			<div id="quiz">
 
-<div id="quiz">
+			<h2>Какъв искаш да станеш:<br>програмист или предприемач?</h2>
 
-<h1>Открий своя профил за 1 минута</h1>
+			<div class="progress">
+				<div class="progress-bar" id="bar"></div>
+			</div>
 
-<div class="progress">
-    <div class="progress-bar" id="bar"></div>
-</div>
+			<div class="question" id="question"></div>
 
-<div class="question" id="question"></div>
+			<button class="btn tech" id="aBtn"></button>
+			<button class="btn biz" id="bBtn"></button>
 
-<button class="btn tech" id="aBtn"></button>
-<button class="btn biz" id="bBtn"></button>
+			</div>
 
-</div>
+			<div id="result" class="result">
 
-<div id="result" class="result">
+			<div class="badge" id="badge"></div>
 
-<div class="badge" id="badge"></div>
+			<h1 id="profileName"></h1>
 
-<h1 id="profileName"></h1>
+			<div class="percent" id="percent"></div>
 
-<div class="percent" id="percent"></div>
+			<p id="description"></p>
 
-<p id="description"></p>
+			<div class="qr">
+				<p><strong>Научи повече в <a href="https://39su.eu/" title="39. СУ Петър Динеков">сайта на 39. СУ "Петър Динеков"</a></strong></p>
 
-<div class="qr">
-    <p><strong>Научи повече в <a href="https://39su.eu/" title="39. СУ Петър Динеков">сайта на 39. СУ "Петър Динеков"</a></strong></p>
+				<img
+				  src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://39su.eu/"
+				  alt="QR Code">
+			</div>
 
-    <img
-      src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://39su.eu/"
-      alt="QR Code">
-</div>
+			<br>
 
-<br>
+			<button class="btn restart" onclick="location.reload()">
+			Реши отново
+			</button>
 
-<button class="btn restart" onclick="location.reload()">
-Реши отново
-</button>
+			</div>
 
-</div>
+			</div>
+		</div>
 
-</div>
+	<script>
 
-<script>
+	const questions = [
 
-const questions = [
+	{
+	q:"Кое ти звучи по-интересно?",
+	a:"Да разбера как работят компютърните програми.",
+	b:"Да измисля как да продам нов продукт."
+	},
 
-{
-q:"Кое ти звучи по-интересно?",
-a:"Да разбера как работи програма.",
-b:"Да измисля как да продам нов продукт."
-},
+	{
+	q:"По време на проект предпочиташ да:",
+	a:"Разработиш приложение или сайт.",
+	b:"Направиш бизнес план."
+	},
 
-{
-q:"По време на проект предпочиташ да:",
-a:"Разработиш приложение или сайт.",
-b:"Направиш бизнес план."
-},
+	{
+	q:"Кой предмет ти е по-близък?",
+	a:"Математика и информатика.",
+	b:"Икономика и обществени науки."
+	},
 
-{
-q:"Кой предмет ти е по-близък?",
-a:"Математика и информатика.",
-b:"Икономика и обществени науки."
-},
+	{
+	q:"Какво би избрал за свободното време?",
+	a:"Да науча нова технология.",
+	b:"Да организирам събитие."
+	},
 
-{
-q:"Какво би избрал за свободното време?",
-a:"Да науча нова технология.",
-b:"Да организирам събитие."
-},
+	{
+	q:"Кое те мотивира повече?",
+	a:"Решаването на логически задачи.",
+	b:"Убеждаването на хора в добра идея."
+	},
 
-{
-q:"Кое те мотивира повече?",
-a:"Решаването на логически задачи.",
-b:"Убеждаването на хора в добра идея."
-},
+	{
+	q:"В екип обикновено:",
+	a:"Търся техническото решение.",
+	b:"Координирам хората."
+	},
 
-{
-q:"В екип обикновено:",
-a:"Търся техническото решение.",
-b:"Координирам хората."
-},
+	{
+	q:"Коя новина би прочел с интерес?",
+	a:"За достиженията на изкуствения интелект.",
+	b:"За успешен млад предприемач."
+	},
 
-{
-q:"Коя новина би прочел с интерес?",
-a:"За изкуствен интелект.",
-b:"За успешен млад предприемач."
-},
+	{
+	q:"Имаш идея за мобилно приложение. Първо ще:",
+	a:"Помисля как да го разработя.",
+	b:"Проверя дали има пазар."
+	}
 
-{
-q:"Имаш идея за мобилно приложение. Първо ще:",
-a:"Помисля как да го разработя.",
-b:"Проверя дали има пазар."
-}
+	];
 
-];
+	let current = 0;
+	let techScore = 0;
 
-let current = 0;
-let techScore = 0;
+	const questionEl = document.getElementById("question");
+	const aBtn = document.getElementById("aBtn");
+	const bBtn = document.getElementById("bBtn");
+	const bar = document.getElementById("bar");
 
-const questionEl = document.getElementById("question");
-const aBtn = document.getElementById("aBtn");
-const bBtn = document.getElementById("bBtn");
-const bar = document.getElementById("bar");
+	function showQuestion(){
 
-function showQuestion(){
+	let q = questions[current];
 
-let q = questions[current];
+	questionEl.textContent = q.q;
+	aBtn.textContent = q.a;
+	bBtn.textContent = q.b;
 
-questionEl.textContent = q.q;
-aBtn.textContent = q.a;
-bBtn.textContent = q.b;
+	bar.style.width =
+	(current / questions.length) * 100 + "%";
+	}
 
-bar.style.width =
-(current / questions.length) * 100 + "%";
-}
+	function answer(type){
 
-function answer(type){
+	if(type === "tech")
+		techScore++;
 
-if(type === "tech")
-    techScore++;
+	current++;
 
-current++;
+	if(current < questions.length){
+		showQuestion();
+	}
+	else{
+		showResult();
+	}
+	}
 
-if(current < questions.length){
-    showQuestion();
-}
-else{
-    showResult();
-}
-}
+	function showResult(){
 
-function showResult(){
+	document.getElementById("quiz").style.display = "none";
+	document.getElementById("result").style.display = "block";
 
-document.getElementById("quiz").style.display = "none";
-document.getElementById("result").style.display = "block";
+	let techPercent =
+	Math.round((techScore / questions.length) * 100);
 
-let techPercent =
-Math.round((techScore / questions.length) * 100);
+	let bizPercent = 100 - techPercent;
 
-let bizPercent = 100 - techPercent;
+	let profileName = "";
+	let description = "";
+	let badge = "";
 
-let profileName = "";
-let description = "";
-let badge = "";
+	if(techPercent > bizPercent){
 
-if(techPercent > bizPercent){
+	profileName = "Софтуерни и хардуерни науки";
+	badge = "💻";
 
-profileName = "Софтуерни и хардуерни науки";
-badge = "💻";
+	description =
+	"Обичаш технологиите, логическите задачи, програмирането и работата с компютърни системи.";
 
-description =
-"Обичаш технологиите, логическите задачи, програмирането и работата с компютърни системи.";
+	}
+	else if(bizPercent > techPercent){
 
-}
-else if(bizPercent > techPercent){
+	profileName = "Предприемачески профил";
+	badge = "💼";
 
-profileName = "Предприемачески профил";
-badge = "💼";
+	description =
+	"Интересуваш се от бизнес идеи, управление на проекти, маркетинг и работа с хора.";
 
-description =
-"Интересуваш се от бизнес идеи, управление на проекти, маркетинг и работа с хора.";
+	}
+	else{
 
-}
-else{
+	profileName = "Комбиниран профил";
+	badge = "🚀";
 
-profileName = "Комбиниран профил";
-badge = "🚀";
+	description =
+	"Имаш интерес както към технологиите, така и към предприемачеството.";
+	}
 
-description =
-"Имаш интерес както към технологиите, така и към предприемачеството.";
-}
+	document.getElementById("badge").textContent = badge;
+	document.getElementById("profileName").textContent = profileName;
 
-document.getElementById("badge").textContent = badge;
-document.getElementById("profileName").textContent = profileName;
+	document.getElementById("percent").innerHTML =
+	`${techPercent}% Техническа насоченост<br>
+	${bizPercent}% Предприемаческа насоченост`;
 
-document.getElementById("percent").innerHTML =
-`${techPercent}% Техническа насоченост<br>
-${bizPercent}% Предприемаческа насоченост`;
+	document.getElementById("description").textContent =
+	description;
+	}
 
-document.getElementById("description").textContent =
-description;
-}
+	aBtn.onclick = () => answer("tech");
+	bBtn.onclick = () => answer("biz");
 
-aBtn.onclick = () => answer("tech");
-bBtn.onclick = () => answer("biz");
+	showQuestion();
 
-showQuestion();
-
-</script>
+	</script>
 
 </body>
 </html>
