@@ -26,6 +26,7 @@ body{
 #logo{
 	max-width:100px;
 	width:8%;
+	min-width:80px;
 }
 #logo img{
 	width:100%;
@@ -35,9 +36,13 @@ body{
 	padding:1%;
 	margin-bottom:2%;
 	background-color:#fff;
-	font-size:150%;
+	font-size: clamp(16px, 1.5vw, 32px);
 	text-align:center;
 	justify-content: space-evenly;
+}
+.header a{
+	text-decoration:none;
+	color:#0057b8;
 }
 .container{
     width:90%;
@@ -129,8 +134,12 @@ h1, h2{
 </head>
 <body>
 	<header class="header wrapper align" >
-		<div id="logo"><img src="Logo-39-FINAL.svg" /></div>
-		<h1>39. СУ "Петър Динеков"</h1>
+		<div id="logo">
+			<a href="https://39su.eu/" title="39. СУ Петър Динеков">
+				<img src="Logo-39-FINAL.svg" />
+			</a>
+		</div>
+		<h1><a href="https://39su.eu/" title="39. СУ Петър Динеков">39. СУ "Петър Динеков"</a></h1>
 	</header>
 		<div class="wrapper align">
 			<div class="container">
